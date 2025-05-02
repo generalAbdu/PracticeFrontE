@@ -11,11 +11,109 @@
         <!--FAVICON-->
         <link rel="icon" href="" type="image/x-icon"/>
         <link rel="icon" href="" type="image/svg+xml"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+         <style>
+
+            .topnav .icon{
+                display:none;
+            }
+           
+           
+            @media screen and (max-width:600px){
+                .topnav a:not(:first-child){
+                    display:none;
+                }
+                .topnav a.icon{
+                    display:block;
+                    float:right;
+                    top:0;
+                    right:0;
+                }
+            }
+            @media screen and (max-width:600px){
+                .topnav.responsive {
+                    display:block;
+                    position: relative;
+                }
+                
+                .topnav.responsive a.icon{
+                    position:absolute;
+                    top:0;
+                    right:0;
+                }
+                .topnav.responsive a{
+                    text-align:left;
+                    display:block;
+                    float:none;
+                    position:relative;
+                }
+            }
+           .collapsable{
+            display:none;
+           }
+           .section{
+            width:100%;
+           }
+
+         </style>
 
     </head>
     <body>
-        <p>Hello ,you are James</p>
+        <div class="topnav" id="mynav">
+            <a href="">Home</a>
+            <a href="">About</a>
+            <a href="">Contact</a>
+            <a href="#;" class="icon" onclick = "myfunction1()"><i class="fa fa-bars"></i></a>
+        </div>
 
+        <button class="section"> section1</button>
+        <div class="collapsable">
+            <p>Hello you are at section1</p>
+        </div>
+
+        <button class="section"> section2</button>
+        <div class="collapsable">
+            <p>Hello you are at section2</p>
+        </div>
+
+        <button class="section"> section3</button>
+        <div class="collapsable">
+            <p>Hello you are at section3</p>
+        </div>
+
+
+        <!--Topnav javascript-->
+        <script>
+            function myfunction1(){
+                var x = document.getElementById("mynav");
+        x.classList.toggle("responsive");
+            }
+        
+        </script>
+        <!--Collapsable javascript-->
+        <script>
+            var section = document.getElementsByClassName("section");
+        let i;
+
+            for(i=0;i<section.length;i++){
+                section[i].addEventListener("click",function(){
+                    var collapsable = document.querySelectorAll(".collapsable");
+                    this.classList.toggle("active");
+                    for(var j = 0;j<collapsable.length;j++){
+                        collapsable[j].style.display = "none";
+                    }
+                    var panel= this.nextElementSibling;
+                    
+                    if(panel.style.display==="none"){
+                        panel.style.display="block";
+                    }
+                    else{
+                        panel.style.display="block";
+                    }
+                })
+            }
+
+        </script>
     </body>
 </html>
