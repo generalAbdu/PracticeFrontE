@@ -55,6 +55,23 @@
            .section{
             width:100%;
            }
+           .bar,.bar1,.bar2{
+            width:20px;
+            height:5px;
+            margin:6px;
+            background-color: black;
+           }
+
+           .resmenu1 .bar1{
+            opacity:0;
+           }
+
+           .resmenu1 .bar{
+            transform: translate(0,11px) rotate(45deg);
+           }
+           .resmenu1 .bar2{
+            transform:translate(0,-11px) rotate(-45deg);
+           }
 
          </style>
 
@@ -81,6 +98,21 @@
         <div class="collapsable">
             <p>Hello you are at section3</p>
         </div>
+        <br>
+
+        <div id="resmenu" Onclick="myfunctin()">
+            <div class="bar"></div>
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+        </div>
+
+        <script>
+            function myfunctin(){
+               var menu= document.getElementById("resmenu");
+               menu.classList.toggle("resmenu1");
+            }
+
+        </script>
 
 
         <!--Topnav javascript-->
