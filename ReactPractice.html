@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>React Multiple Components</title>
+  <!-- React and Babel CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+  <div id="Mydiv"></div>
+  <div id="root"></div>
+  <script type="text/babel">
+
+    function Hello(){
+      return <h1>HEloo kudus </h1>    }
+
+      function Wello (){
+        return <h2>Hello Ama </h2>
+      }
+
+      const container = document.getElementById("Mydiv");
+      const root1 = ReactDOM.createRoot(container);
+      root1.render(
+        <>
+        <Hello />
+        <Wello />
+        </>
+      )
+
+  </script>
+
+  <!-- Class Component Script -->
+  <script type="text/babel">
+ class Car extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={color:"red"};
+  }
+
+  
+   componentDidMount() {
+    setTimeout(() => {
+      this.setState({color: "yellow"})
+    }, 1000)
+  }
+  render(){
+    return(
+      <h1>My favourite color {this.state.color}</h1>
+    );
+  }
+ }
+    const root2 = ReactDOM.createRoot(document.getElementById('root'));
+    root2.render(<Car favcol="blue"/>);
+  </script>
+
+</body>
+</html>
