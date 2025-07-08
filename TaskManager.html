@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager System</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container{
+            max-width:800px;
+            margin: 0 auto;
+            background:rgba(255,255,255,0.95);
+            border-radius:20px;
+            padding:30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+         h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+         .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+         .stat-card {
+            background: linear-gradient(45deg, #b9b071, #9d8d13);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 150px;
+            margin: 5px;
+            transition: transform 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateX(-5px);
+        }
+          .stat-card h3 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+
+
+    </style>
+    </head>
+    <body>
+
+        <div class="container">
+
+            <h1>Javascript Skills Practice</h1>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <h3 id="totaltask">0</h3>
+                    <p>Total Tasks</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="completedtask">Completed</h3>
+                    <p>Completed</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="pendingtask">Pending</h3>
+                    <p>Pending</p>
+                </div>
+            </div>
+        </div>
+
+
+
+    </body>
+</html>
