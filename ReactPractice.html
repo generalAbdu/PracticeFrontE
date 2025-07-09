@@ -12,6 +12,7 @@
 
   <div id="Mydiv"></div>
   <div id="root"></div>
+  <div id="Mydiv1"></div>
   <script type="text/babel">
 
     function Hello(){
@@ -37,23 +38,28 @@
  class Car extends React.Component{
   constructor(props){
     super(props);
-    this.state={color:"red"};
+    this.state={color:"blue"};
   }
-
-  
-   componentDidMount() {
-    setTimeout(() => {
-      this.setState({color: "yellow"})
-    }, 1000)
+  componentDidMount(){
+    setTimeout(()=>{this.setState({color:"Yellow"})},1000)
   }
+shouldComponentUpdate(){
+  return true;
+}
+changeColor = () =>{
+  this.setState({color:"Hello"})
+}
   render(){
-    return(
-      <h1>My favourite color {this.state.color}</h1>
-    );
+    return (<>
+       <h1>My favourite color is {this.state.color}</h1>
+       <button type="button" onClick={this.changeColor}>Change</button>
+       </>
+    )
   }
  }
-    const root2 = ReactDOM.createRoot(document.getElementById('root'));
-    root2.render(<Car favcol="blue"/>);
+ const container1 = ReactDOM.createRoot(document.getElementById("Mydiv1"))
+ container1.render(<Car />)
+
   </script>
 
 </body>
