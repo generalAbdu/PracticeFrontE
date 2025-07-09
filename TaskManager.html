@@ -5,82 +5,208 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Manager System</title>
     <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container{
-            max-width:800px;
-            margin: 0 auto;
-            background:rgba(255,255,255,0.95);
-            border-radius:20px;
-            padding:30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+       *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+       }
+       body{
+        background:rgba(209, 207, 252, 0.30);
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        padding:20px;
+        min-height:100vh;
+       }
+       .container{
+        max-width:800px;
+        background: rgba(255,255,255,0.95);
+        padding:30px;
+        margin: 0 auto ;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(38, 36, 36, 0.95)
+       }
+       .stats{
+        display:flex;
+        flex-wrap: wrap;
+        padding:20px;
+        margin-bottom: 20px;
+        justify-content: space-around;
+       }
+       .stat-card{
+        background:linear-gradient(45deg, #ffacff,#ffae);
+        padding:20px;
+        border-radius: 15px;
+        min-width:150px;
+        text-align: center;
+        transition: transform 0.3s ease-in ;
+        margin:5px;
+       }
+       .stat-card:hover{
+        transform: translateY(-5px);
+       }
+       .stat-card h3{
+        font-size: 2em;
+        margin-bottom:5px;
+       }
+       h1{
+        color:#5d5a5a;
+        margin-bottom:30px;
+        font-size: 2.5em;
+        text-align: center;
+       }
+       .form-section{
+        background: #ffacff;
+        padding:25px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+       }
+       .form-group{
+        margin-bottom: 20px;
+       }
+       label{
+        color:#5d5a5a;
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+       }
+       input,select,textarea{
+        width:100%;
+        padding:12px;
+        border:2px solid #ffa;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+       }
+
+       input:focus,textarea:focus,select:focus{
+        outline: none;
+        border-color:aqua;
+       }
+       .btn{
+        background: linear-gradient(45deg, #ffacff ,#ffa);
+        color:white;
+        padding:12px 30px;
+        border:none;
+        border-radius: 8px;
+        cursor:pointer;
+        font-size: 16px;
+        font-weight:bold;
+        transition: transform 0.3s ease;
+        margin-top:30px;
+        box-shadow: 0 20px 40px #5d5a5a;
+       }
+        .btn:hover {
+            transform: translateY(-2px);
         }
 
-         h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 2.5em;
+        .btn-danger {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
         }
-         .stats {
+
+        .btn-success {
+            background: linear-gradient(45deg, #51cf66, #40c057);
+        }
+        .filters{
             display: flex;
-            justify-content: space-around;
-            margin-bottom: 30px;
             flex-wrap: wrap;
+            gap:15px;
+            margin-bottom:20px;
         }
-         .stat-card {
-            background: linear-gradient(45deg, #b9b071, #9d8d13);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            min-width: 150px;
-            margin: 5px;
-            transition: transform 0.3s ease;
-        }
-        .stat-card:hover {
-            transform: translateX(-5px);
-        }
-          .stat-card h3 {
-            font-size: 2em;
-            margin-bottom: 5px;
+                .search-section {
+            margin-bottom: 20px;
         }
 
-
-
+        #searchInput {
+            margin-bottom: 10px;
+        }
+         @media (max-width: 600px) {
+            .stats {
+                flex-direction: column;
+            }
+            
+            .filters {
+                flex-direction: column;
+            }
+            
+            .task-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
     </style>
     </head>
     <body>
 
-        <div class="container">
+      <div class="container">
+        <h1>Javascript Skills Practice</h1>
 
-            <h1>Javascript Skills Practice</h1>
-
-            <div class="stats">
-                <div class="stat-card">
-                    <h3 id="totaltask">0</h3>
-                    <p>Total Tasks</p>
-                </div>
-                <div class="stat-card">
-                    <h3 id="completedtask">Completed</h3>
-                    <p>Completed</p>
-                </div>
-                <div class="stat-card">
-                    <h3 id="pendingtask">Pending</h3>
-                    <p>Pending</p>
-                </div>
+        <div class="stats">
+            <div class="stat-card">
+                <h3 id="totalTask">0</h3>
+                <p>Total Tasks</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="completedTask">Completed</h3>
+                <p>Completed</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="pendingTask">Pending</h3>
+                <p>Pending</p>
             </div>
         </div>
 
+        <div class="form-section">
+            <h2>Add New Task</h2>
+            <form class="taskForm">
+                <div class="form-group">
+                    <label for="taskTitle">Task Title</label>
+                    <input type="text" id="taskTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskDescription">Description</label>
+                    <textarea id="taskDescription" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="taskPriority">Priority</label>
+                    <select id="taskPriority">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Meduim</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+                <div class="taskDueDate">
+                    <label for="taskDueDate">Due Date</label>
+                    <input type="date" id="taskDueDate"/>
+                </div>
+                <button type="submit" class="btn">Add Task</button>
+            </form>
+        </div>
+
+        <div class="search-section">
+            <input type="text" id="searchInput" placeholder="Search task......"/>
+            <div class="filters">
+                <select id="priorityFilters">
+                    <option value="All">All</option>
+                    <option value="Low">Low</option>
+                    <option value="Meduim">Meduim</option>
+                    <option value="High">Meduim</option>
+                </select>
+                <select id="statusFilter">
+                    <option value="All">All</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Pending">Pending</option>
+                </select>
+                <button  class="btn btn-danger" id="clearAllBtn">Clear All Task</button>
+            </div>
+
+            <!-- Task List Section -->
+        <div id="taskList" class="task-list">
+            <!-- Tasks will be dynamically added here -->
+        </div>
+        </div>
+
+
+
+      </div>
 
 
     </body>
