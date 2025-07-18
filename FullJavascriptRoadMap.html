@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Mastery - Complete Learning Path</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card.beginner {
+            border-color: #51cf66;
+        }
+
+        .project-card.intermediate {
+            border-color: #ffa500;
+        }
+
+        .project-card.advanced {
+            border-color: #ff6b6b;
+        }
+
+        .project-card.expert {
+            border-color: #845ec2;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .difficulty-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: white;
+        }
+
+        .difficulty-badge.beginner { background: #51cf66; }
+        .difficulty-badge.intermediate { background: #ffa500; }
+        .difficulty-badge.advanced { background: #ff6b6b; }
+        .difficulty-badge.expert { background: #845ec2; }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .concepts-list {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .concepts-list h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .concepts-list ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .concepts-list li {
+            background: #e9ecef;
+            margin: 3px 0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.85em;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .learning-path {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .learning-path h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #667eea;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #667eea;
+        }
+
+        .timeline-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .timeline-description {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .interactive-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .code-challenge {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .challenge-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            background: #34495e;
+            color: #ecf0f1;
+            margin-top: 10px;
+        }
+
+        .challenge-result {
+            background: #27ae60;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #51cf66, #40c057);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .skill-assessment {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .skill-level {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .skill-level-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ffa500, #51cf66);
+            transition: width 0.5s ease;
+        }
+
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 JavaScript Mastery Path</h1>
+        
+        <!-- Progress Tracking -->
+        <div class="interactive-section">
+            <h2>Your Learning Progress</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="overallProgress"></div>
+            </div>
+            <p>Overall Progress: <span id="progressText">0%</span></p>
+            
+            <div class="skill-assessment">
+                <div class="skill-item">
+                    <h4>DOM Manipulation</h4>
+                    <div class="skill-level">
+                        <div class="skill-level-fill" style="width: 20%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h4>Async Programming</h4>
+                    <div class="skill-level">
+                        <div class="skill-level-fill" style="width: 10%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h4>ES6+ Features</h4>
+                    <div class="skill-level">
+                        <div class="skill-level-fill" style="width: 25%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h4>API Integration</h4>
+                    <div class="skill-level">
+                        <div class="skill-level-fill" style="width: 5%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning Path Timeline -->
+        <div class="learning-path">
+            <h2>📚 Recommended Learning Path</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-title">1. Foundation (Weeks 1-2)</div>
+                    <div class="timeline-description">Master basic syntax, variables, functions, and control structures</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">2. DOM & Events (Weeks 3-4)</div>
+                    <div class="timeline-description">Learn to manipulate the DOM and handle user interactions</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">3. Advanced Functions (Weeks 5-6)</div>
+                    <div class="timeline-description">Explore closures, higher-order functions, and functional programming</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">4. Async Programming (Weeks 7-8)</div>
+                    <div class="timeline-description">Master promises, async/await, and API integration</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">5. Modern JS (Weeks 9-10)</div>
+                    <div class="timeline-description">ES6+ features, modules, and build tools</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">6. Advanced Patterns (Weeks 11-12)</div>
+                    <div class="timeline-description">Design patterns, performance optimization, and testing</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Code Challenge -->
+        <div class="interactive-section">
+            <h2>💻 Quick Code Challenge</h2>
+            <div class="code-challenge">
+                <p>Challenge: Create a function that takes an array of numbers and returns the sum of all even numbers.</p>
+                <p>Example: sumEvenNumbers([1, 2, 3, 4, 5, 6]) should return 12</p>
+                <textarea class="challenge-input" id="codeInput" placeholder="Write your function here..."></textarea>
+                <button class="btn btn-primary" onclick="checkChallenge()">Test Code</button>
+                <div class="challenge-result" id="challengeResult"></div>
+            </div>
+        </div>
+
+        <!-- Project Cards -->
+        <div class="project-grid">
+            <!-- Beginner Projects -->
+            <div class="project-card beginner">
+                <div class="project-header">
+                    <div class="project-title">📋 Task Manager</div>
+                    <div class="difficulty-badge beginner">Beginner</div>
+                </div>
+                <div class="project-description">
+                    Interactive task management system with CRUD operations, filtering, and local storage.
+                </div>
+                <div class="concepts-list">
+                    <h4>Key Concepts:</h4>
+                    <ul>
+                        <li>DOM Manipulation</li>
+                        <li>Event Handling</li>
+                        <li>Array Methods</li>
+                        <li>Object-Oriented Programming</li>
+                        <li>Form Validation</li>
+                        <li>Local Storage</li>
+                    </ul>
+                </div>
+                <div class="project-actions">
+                    <button class="btn btn-primary" onclick="markCompleted('task-manager')">Mark Complete</button>
+                    <button class="btn btn-secondary" onclick="showCode('task-manager')">View Code</button>
+                </div>
+            </div>
+
+            <div class="project-card beginner">
+                <div class="project-header">
+                    <div class="project-title">🎮 Memory Game</div>
+                    <div class="difficulty-badge beginner">Beginner</div>
+                </div>
+                <div class="project-description">
+                    Card matching game with score tracking, timer, and difficulty levels.
+                </div>
+                <div class="concepts-list">
+                    <h4>Key Concepts:</h4>
+                    <ul>
+                        <li>Array Shuffling</li>
+                        <li>Event Delegation</li>
+                        <li>Timers & Intervals</li>
+                        <li>CSS Animations</li>
+                        <li>Game State Management</li>
+                        <li>Score Tracking</li>
+                    </ul>
+                </div>
+                <div class="project-actions">
+                    <button class="btn btn-primary" onclick="markCompleted('memory-game')">Mark Complete</button>
+                    <button class="btn btn-secondary" onclick="createProject('memory-game')">Create Project</button>
+                </div>
+            </div>
+
+            <!-- Intermediate Projects -->
+            <div class="project-card intermediate">
+                <div class="project-header">
+                    <div class="project-title">🌤️ Weather App</div>
+                    <div class="difficulty-badge intermediate">Intermediate</div>
+                </div>
+                <div class="project-description">
+                    Real-time weather application with API integration, geolocation, and forecast display.
+                </div>
+                <div class="concepts-list">
+                    <h4>Key Concepts:</h4>
+                    <ul>
+                        <li>Fetch API</li>
+                        <li>Promises & Async/Await</li>
+                        <li>Geolocation API</li>
+                        <li>Error Handling</li>
+                        <li>Data Visualization</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+                <div class="project-actions">
+                    <button class="btn btn-primary" onclick="markCompleted('weather-app')">Mark Complete</button>
+                    <button class="btn btn-secondary" onclick="createProject('weather-app')">Create Project</button>
+                </div>
+            </div>
+
+            <div class="project-card intermediate">
+                <div class="project-header">
+                    <div class="project-title">💰 Expense Tracker</div>
+                    <div class="difficulty-badge intermediate">Intermediate</div>
+                </div>
+                <div class="project-description">
+                    Personal finance tracker with charts, categories, and budget management.
+                </div>
+                <div class="concepts-list">
+                    <h4>Key Concepts:</h4>
+                    <ul>
+                        <li>Data Persistence</li>
+                        <li>Chart Libraries</li>
+                        <li>Date Manipulation</li>
+                        <li>Statistical Calculations</li>
+                        <li>Export/Import Data</li>
+                        <li>Form Validation</li>
+                    </ul>
+                </div>
+                <div class="project-actions">
+                    <button class="btn btn-primary" onclick="markCompleted('expense-tracker')">Mark Complete</button>
+                    <button class="btn btn-secondary" onclick="createProject('expense-tracker')">Create Project</button>
+                </div>
+            </div>
+
+            <!-- Advanced Projects -->
+            <div class="project-card advanced">
+                <div class="project-header">
+                    <div class="project-title">🛒 E-commerce Cart</div>
+                    <div class="difficulty-badge advanced">Advanced</div>
+                </div>
+                <div class="project-description">
+                    Full-featured shopping cart with product filtering, payment simulation, and order management.
+                </div>
+                <div class="concepts-list">
+                    <h4>Key Concepts:</h4>
+                    <ul>
+                        <li>State Management</li>
+                        <li>Complex Data Structures</li>
+                        <li>Search Algorithms</li>
+                        <li>Payment Integration</li>
+                        <li>Inventory Management</li>
+                        <li>User Authentication</li>
+                    </ul>
+                </div>
+                <div class="project-actions">
+                    <button class="btn btn-primary" onclick="markCompleted('ecommerce-cart')">Mark Complete</button>
+                    <button class="btn btn-secondary" onclick="createProject('ecommerce-cart')">Create Project</button>
+                </div>
+            </div>
+
+            <div class="project-card advanced">
+                <div class="project-header">
+                    <div class="project-title">📊 Data Dashboard</div>
+                    <div class="difficulty-badge advanced">Advanced</div>
+                </div>
+                <div class="project-description">
+                    Interactive dashboard with real-time data visualization, filters, and export capabilities.
+                </div>
+                <div class="concepts-list">
+                    <h4>Key Concepts:</h4>
+                    <ul>
+                        <li>WebSocket Connections</li>
+                        <li>Data Visualization</li>
+                        <li>Real-time Updates</li>
+                        <li>Performance Optimization</li>
+                        <li>Data Processing</li>
+                        <li>CSV/JSON Handling</li>
+                    </ul>
+                </div>
+                <div class="project-actions">
+                    <button class="btn btn-primary" onclick="markCompleted('data-dashboard')">Mark Complete</button>
+                    <button class="btn btn-secondary" onclick="createProject('data-dashboard')">Create Project</button>
+                </div>
+            </div>
+
+            <!-- Expert Projects -->
+            <div class="project-card expert">
+                <div class="project-header">
+                    <div class="project-title">🎯 Code Editor</div>
+                    <div class="difficulty-badge expert">Expert</div>
+                </div>
+                <div class="project-description">
+                    Browser-based code editor with syntax highlighting, auto-completion, and file management.
+                </div>
+                <div class="concepts-list">
+                    <h4>Key Concepts:</h4>
+                    <ul>
+                        <li>Syntax Parsing</li>
+                        <li>Virtual DOM</li>
+                        <li>File System API</li>
+                        <li>Code Compilation</li>
+                        <li>Plugin Architecture</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                </div>
+                <div class="project-actions">
+                    <button class="btn btn-primary" onclick="markCompleted('code-editor')">Mark Complete</button>
+                    <button class="btn btn-secondary" onclick="createProject('code-editor')">Create Project</button>
+                </div>
+            </div>
+
+            <div class="project-card expert">
+                <div class="project-header">
+                    <div class="project-title">🤖 AI Chat Bot</div>
+                    <div class="difficulty-badge expert">Expert</div>
+                </div>
+                <div class="project-description">
+                    Intelligent chatbot with natural language processing, machine learning, and conversation memory.
+                </div>
+                <div class="concepts-list">
+                    <h4>Key Concepts:</h4>
+                    <ul>
+                        <li>NLP Integration</li>
+                        <li>Machine Learning</li>
+                        <li>WebSocket Communication</li>
+                        <li>Context Management</li>
+                        <li>API Integration</li>
+                        <li>Real-time Processing</li>
+                    </ul>
+                </div>
+                <div class="project-actions">
+                    <button class="btn btn-primary" onclick="markCompleted('ai-chatbot')">Mark Complete</button>
+                    <button class="btn btn-secondary" onclick="createProject('ai-chatbot')">Create Project</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Progress tracking system
+        let completedProjects = [];
+        let totalProjects = 8;
+
+        function markCompleted(projectId) {
+            if (!completedProjects.includes(projectId)) {
+                completedProjects.push(projectId);
+                updateProgress();
+                showNotification(`Project "${projectId}" completed! 🎉`);
+                
+                // Update skill levels based on project type
+                updateSkillLevels(projectId);
+            }
+        }
+
+        function updateProgress() {
+            const progress = (completedProjects.length / totalProjects) * 100;
+            document.getElementById('overallProgress').style.width = progress + '%';
+            document.getElementById('progressText').textContent = Math.round(progress) + '%';
+        }
+
+        function updateSkillLevels(projectId) {
+            const skillMapping = {
+                'task-manager': { dom: 30, es6: 25, async: 10 },
+                'memory-game': { dom: 40, es6: 30, async: 15 },
+                'weather-app': { dom: 50, es6: 40, async: 60, api: 40 },
+                'expense-tracker': { dom: 60, es6: 50, async: 70, api: 50 },
+                'ecommerce-cart': { dom: 80, es6: 70, async: 80, api: 70 },
+                'data-dashboard': { dom: 90, es6: 80, async: 90, api: 80 },
+                'code-editor': { dom: 95, es6: 90, async: 95, api: 90 },
+                'ai-chatbot': { dom: 100, es6: 95, async: 100, api: 100 }
+            };
+
+            const skills = skillMapping[projectId];
+            if (skills) {
+                const skillItems = document.querySelectorAll('.skill-level-fill');
+                skillItems[0].style.width = Math.max(parseInt(skillItems[0].style.width) || 0, skills.dom) + '%';
+                skillItems[1].style.width = Math.max(parseInt(skillItems[1].style.width) || 0, skills.async) + '%';
+                skillItems[2].style.width = Math.max(parseInt(skillItems[2].style.width) || 0, skills.es6) + '%';
+                skillItems[3].style.width = Math.max(parseInt(skillItems[3].style.width) || 0, skills.api || 0) + '%';
+            }
+        }
+
+        // Code challenge checker
+        function checkChallenge() {
+            const code = document.getElementById('codeInput').value;
+            const result = document.getElementById('challengeResult');
+            
+            try {
+                // Create a safe evaluation environment
+                const func = new Function('return ' + code)();
+                const testResult = func([1, 2, 3, 4, 5, 6]);
+                
+                if (testResult === 12) {
+                    result.textContent = '✅ Correct! The function returns 12 as expected.';
+                    result.style.background = '#27ae60';
+                } else {
+                    result.textContent = `❌ Incorrect. Your function returned ${testResult}, expected 12.`;
+                    result.style.background = '#e74c3c';
+                }
+                result.style.display = 'block';
+            } catch (error) {
+                result.textContent = `❌ Error: ${error.message}`;
+                result.style.background = '#e74c3c';
+                result.style.display = 'block';
+            }
+        }
+
+        // Project creation functions
+        function createProject(projectId) {
+            const projectGenerators = {
+                'memory-game': createMemoryGame,
+                'weather-app': createWeatherApp,
+                'expense-tracker': createExpenseTracker,
+                'ecommerce-cart': createEcommerceCart,
+                'data-dashboard': createDataDashboard,
+                'code-editor': createCodeEditor,
+                'ai-chatbot': createAIChatbot
+            };
+
+            if (projectGenerators[projectId]) {
+                projectGenerators[projectId]();
+            } else {
+                alert('This project template will be created for you!');
+            }
+        }
+
+        function createMemoryGame() {
+            showNotification('Memory Game template ready! Check the concepts and start building.');
+        }
+
+        function createWeatherApp() {
+            showNotification('Weather App template ready! Remember to get an API key from OpenWeatherMap.');
+        }
+
+        function createExpenseTracker() {
+            showNotification('Expense Tracker template ready! Focus on data visualization and calculations.');
+        }
+
+        function createEcommerceCart() {
+            showNotification('E-commerce Cart template ready! This is a complex project - take your time.');
+        }
+
+        function createDataDashboard() {
+            showNotification('Data Dashboard template ready! Great for learning data visualization.');
+        }
+
+        function createCodeEditor() {
+            showNotification('Code Editor template ready! This is an advanced project with many components.');
+        }
+
+        function createAIChatbot() {
+            showNotification('AI Chatbot template ready! Consider using OpenAI API or similar services.');
+        }
+
+        // Notification system
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #51cf66;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                z-index: 1000;
+                font-weight: bold;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Additional learning resources
+        const learningResources = {
+            documentation: [
+                'MDN Web Docs',
+                'JavaScript.info',
+                'W3Schools',
+                'DevDocs'
+            ],
+            practice: [
+                'LeetCode',
+                'HackerRank',
+                'Codewars',
+                'FreeCodeCamp'
+            ],
+            tools: [
+                'VS Code',
+                'Chrome DevTools',
+                'Node.js',
+                'Git/GitHub'
+            ]
+        };
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            showNotification('Welcome to your JavaScript mastery journey! 🚀');
+            
+            // Add sample solution to the code challenge
+            setTimeout(() => {
+                const sampleSolution = `function sumEvenNumbers(arr) {
+    return arr.filter(num => num % 2 === 0).reduce((sum, num) => sum + num, 0);
+}`;
+                document.getElementById('codeInput').placeholder = 'Try writing your solution here, or use this sample:\n\n' + sampleSolution;
+            }, 2000);
+        });
+
+        console.log('🎯 JavaScript Mastery Path loaded!');
+        console.log('📚 Learning Resources:', learningResources);
+        console.log('🚀 Start with the beginner projects and work your way up!');
+    </script>
+</body>
+</html>

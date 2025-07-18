@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>React Multiple Components</title>
   <!-- React and Babel CDN -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -13,6 +14,7 @@
   <div id="Mydiv"></div>
   <div id="root"></div>
   <div id="Mydiv1"></div>
+  <div id="root2"></div>
   <script type="text/babel">
 
     function Hello(){
@@ -60,6 +62,62 @@ changeColor = () =>{
  const container1 = ReactDOM.createRoot(document.getElementById("Mydiv1"))
  container1.render(<Car />)
 
+  </script>
+
+  <script type="text/babel">
+    class Container extends React.Component {
+    constructor(props){
+      super(props);
+      this.state={show:true}
+    }
+  delHeader=()=>{
+    this.setState({show:false})
+  }
+  render() {
+    let myheader;
+    if (this.state.show) {
+      myheader = <Child />;
+    };
+    return (
+      <div>
+      {myheader}
+      <button type="button" onClick={this.delHeader}>Delete Header</button>
+      </div>
+    );
+  }
+}
+
+class Child extends React.Component {
+  componentWillUnmount() {
+    alert("The component named Header is about to be unmounted.");
+  }
+  render() {
+    return (
+      <h1>Hello World!</h1>
+    );
+  }
+}
+
+const root3 = ReactDOM.createRoot(document.getElementById('root2'));
+root3.render(<Container />);
+
+
+function Car(props) {
+  return <h2>I am a { props.brand.model }!</h2>;
+}
+
+function Garage() {
+  const carInfo = { name: "Ford", model: "Mustang" };
+  return (
+    <>
+      <h1>Who lives in my garage?</h1>
+      <Car brand={ carInfo } />
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Garage />);
   </script>
 
 </body>

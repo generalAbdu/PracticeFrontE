@@ -121,6 +121,7 @@
          @media (max-width: 600px) {
             .stats {
                 flex-direction: column;
+               
             }
             
             .filters {
@@ -207,6 +208,20 @@
 
 
       </div>
+      <script>
+        //Task Manager class
+
+        class TaskManager {
+            constructor(){
+                this.tasks = this.loadTask();
+                this.currentId = this.getNextId();
+                this.initialEventListeners();
+                this.renderTasks();
+                this.updateStats();
+            }
+
+        }
+      </script>
 
 
     </body>
