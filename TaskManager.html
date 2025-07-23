@@ -209,18 +209,28 @@
 
       </div>
       <script>
-        //Task Manager class
-
-        class TaskManager {
-            constructor(){
-                this.tasks = this.loadTask();
-                this.currentId = this.getNextId();
-                this.initialEventListeners();
-                this.renderTasks();
-                this.updateStats();
-            }
-
+     //Task Manager class
+     class Manager{
+        constructor(){
+            this.tasks = loadTask(); //Data loading
+            this.currentId = getNextId();// Unique identifier state management
+            this.initializeEventListeners(); // To add event listeners
+            this.renderTask(); //Render UI to display task
+            this.updateStats() ;// To update the stats container                                                                                                                                                                       
         }
+        //Creates an empty array to store my tasks
+        loadTask(){
+            return [];
+        }
+      //Generate unique id for each task using the ternary operator and yeah I did use the spread
+      //to get list of element instead of array
+        getNextId(){
+            this.tasks.length > 0 ? Math.max(...this.tasks.map(t => t.id))+1:1;
+        }
+     }
+
+       
+       
       </script>
 
 
