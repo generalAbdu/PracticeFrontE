@@ -1,304 +1,40 @@
 <!DOCTYPE html>
 <html>
     <head>
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Personal Profile Card</title>
         <link rel="stylesheet" href="output.css">
     </head>
-    <body class="p-4 m-8">
-        <h1 class="text-5xl font-bold bg-blue-100 p-big-size">Hello World</h1>
-        <div class="inline">Inline Element</div>
-        <div class="inline-block">Inline Element</div>
+    <body>
+        <!--Purpose Of the code below-->
+        <div class="bg-gray-100 p-8">
+             <h1 class="w-full bg-gray-500 p-6 m-4 text-white text-center text-xl  font-semibold rounded-2xl shadow-md">
+                 Personal Profile Card
+            </h1>
+            <ul class="flex flex-col space-y-4">
+                <li>Profile Image</li>
+                <li>Name and title</li>
+                <li>Social Media button</li>
+                <li>background gradient</li>
+                <li>Hover effects on button</li>
+            </ul>
 
-        <div class="flex">
-            <div> James</div>
-            <div>Kudus</div>
-            <div>Abdul</div>
-        </div>
+            <div class="mt-8 flex">
+                <div class="flex bg-white p-8 flex-col rounded-md">
+                    <div><img src="./Assets/shirtlessman.jpg" alt=""  class="rounded-full w-12 h-12 mx-auto"/></div>
+                    <div class="p-1 text-center font-bold text-xl">Kudus Adamu</div>
+                    <div class="p-1 text-center color-primary">Software Engineer</div>
+                    <div class="flex flex-rows space-x-4 mt-2">
+                        <img src="./Assets/facebook.png" alt="facebook"/>
+                        <img src="./Assets/snapchat.png" alt="snapchat"/>
+                        <img src="./Assets/x_logo.png.png" alt="x"/>
+                        <img src="./Assets/youtube.png" alt="youtube"/>
+                        
+                    </div>
 
-  <!--Position-->
-        <div class="static">This is static</div>
-        <div class="relative">This is relative</div>
-        <div class="absolute top-100 left-0">This is absolute position</div>
-        <div class="fixed top-4 right-4"> This is Fixed positioning</div>
-        <div class="sticky top-4">This is sticky</div>
+                </div>
+            </div>
 
-        <!--Z-index-->
-
-        <div class="z-0">This is z-index :0</div>
-        <div class="z-9">This is z-index :9</div>
-        <div class="z-30">This is z-index :30</div>
-
-
-        <!--Flexbox and grid-->
-        <div class="flex flex-row">
-            <div>Kudus</div>
-            <div>Abdul</div>
         </div>
-        <div class="flex flex-col">
-            <div>Kudus</div>
-            <div>Abdul</div>
-        </div>
-         <div class=" block flex flex-row-reverse bg-blue-50">
-            <div class="flex items-start">Kudus</div>
-            <div>Abdul</div>
-        </div>
-        <div class="flex flex-col-reverse">
-            <div>Kudus</div>
-            <div>Abdul</div>
-        </div>
-        <div class="flex justify-end">
-            <div>Kudus</div>
-            <div>Abdul</div>
-        </div>
-        <div class="flex justify-start">
-            <div>Kudus</div>
-            <div>Abdul</div>
-        </div>
-        <div class="flex justify-center">
-            <div>Kudus</div>
-            <div>Abdul</div>
-        </div>
-        <div class="flex justify-between">
-            <div>Kudus</div>
-            <div>Abdul</div>
-            <div>Adamu</div>
-        </div>
-         <div class="flex justify-around">
-            <div>Kudus</div>
-            <div>Abdul</div>
-            <div>Adamu</div>
-        </div>
-         <div class="flex justify-evenly">
-            <div>Kudus</div>
-            <div>Abdul</div>
-            <div>Adamu</div>
-        </div>
-         <div class="flex items-start bg-red-400">
-            <div>Kudus</div>
-            <div>Abdul</div>
-            <div>Adamu</div>
-        </div>
-        <div class="flex items-end bg-blue-400">
-            <div>Kudus</div>
-            <div>Abdul</div> 
-        </div>
-        <div class="flex items-center">
-            <div class="p-2">Kudus</div>
-            <div clas="p-4">Abdul</div>
-            <div class="p-0">Kudus</div>
-            <div class="p-6">Abdul</div> 
-        </div>
-         <div class="flex items-stretch">
-            <div class="p-2">Kudus</div>
-            <div clas="p-4">Abdul</div>
-            <div class="p-0">Kudus</div>
-            <div class="p-6">Abdul</div> 
-        </div>
-
-         <div class="flex items-baseline">
-            <div class="p-2 w-50">Kudus</div>
-            <div clas="p-4">Abdul</div>
-            <div class="p-0">Kudus</div>
-            <div class="p-6">Abdul</div> 
-        </div>
-
-        <div class="flex flex-wrap">
-            Wrap
-        </div>
-        <div class="flex flex-nowrap">
-            No wrap
-        </div>
-
-        <div class="flex">
-            <div class="flex-1">Grow equally</div>
-            <div class="flex-2">Grow twice as much</div>
-            <div class="flex-none">Don't grow</div>
-        </div>
-
-
-        <!--Grid-->
-        <div class="grid grid-cols-1">1 column</div>
-        <div class="grid grid-cols-2">
-            <div>First</div>
-            <div>Second</div>
-        </div>
-
-        <div class="grid grid-cols-4 bg-red-400">
-            <div class="col-span-2 bg-blue-50">First</div>
-          
-            <div>Third</div>
-            <div>Fourth</div>
-        </div>
-
-         <div class="grid grid-row-3">
-            <div>First</div>
-            <div class="row-span-2 bg-pink-100">Second</div>
-            <div>Fourth</div>
-        </div>
- 
-        <div class="grid grid-cols-6">
-            <div>One</div>
-            <div class="col-start-2 col-end-5">Start at 2,end at 5</div> 
-            <div>Six</div>
-        </div>
-
-        <div class="p-0 bg-blue-100">No Padding</div>
-        <div class="p-1 bg-yellow-100">4px padding</div>
-        <div class="p-2 bg-pink-100">8px padding</div>
-        <div class="p-3 bg-red-100">12px padding</div>
-        
-        <div class="pt-3 bg-red-100">12px padding-top</div>
-        <div class="pb-3 bg-blue-100">12px padding-bottom</div>
-        <div class="pl-3 bg-pink-100">12px padding-left</div>
-        <div class="pr-3 bg-yellow-100">12px padding-right</div>
-        <div class="px-3 bg-brown-100">12px padding-horizontal</div>
-        <div class="py-3 bg-blue-100">12px padding-vertical</div>
-
-         <div class="m-0 bg-blue-100">No margin</div>
-        <div class="m-1 bg-yellow-100">4px margin</div>
-        <div class="m-2 bg-pink-100">8px margin</div>
-        <div class="m-3 bg-red-100">12px margin</div>
-        
-        <div class="mt-3 bg-red-100">12px margin-top</div>
-        <div class="mb-3 bg-blue-100">12px margin-bottom</div>
-        <div class="ml-3 bg-pink-100">12px margin-left</div>
-        <div class="mr-3 bg-yellow-100">12px margin-right</div>
-        <div class="mx-3 bg-brown-100">12px margin-horizontal</div>
-        <div class="my-3 bg-blue-100">12px margin-vertical</div>
-        
-
-        <div class="-my-3 bg-blue-100">12px margin-vertical</div>
-        <div class="-mt-3 bg-blue-100">12px margin-vertical</div>
-
-        <div class="space-x-4">
-            <div>Item 1</div>
-            <div>Item 2</div>
-            <div>Item 3</div>
-        </div>
-         <div class="space-y-2">
-            <div>Item 1</div>
-            <div>Item 2</div>
-            <div>Item 3</div>
-        </div>
-
-         <div class=" w-full mt-3 bg-red-100">12px margin-top</div>
-        <div class=" w-4 mb-3 bg-blue-100">12px margin-bottom</div>
-        <div class="w-1/2 ml-3 bg-pink-100">12px margin-left</div>
-        <div class="w-2/3 mr-3 bg-yellow-100">12px margin-right</div>
-        <div class="w-screen mx-3 bg-brown-100">12px margin-horizontal</div>
-        <div class=" w-auto my-3 bg-blue-100">12px margin-vertical</div>
-        
-
-        <div class="w-fit p-8 m-2 bg-red-400 border-4 border-blue-300 border-t border-b rounded-full">
-            Color Me!
-        </div>
-        <div class="min-w-0">Min width 0</div>
-        <div class="max-w-md">max width medium</div>
-        <div class="max-w-sm">small width medium</div>
-        <div class="max-w-lg">Maximan width large</div>
-        <div class="max-w-xl">Maximan width extra large</div>
-
-        <div class="h-0">Opx</div>
-        <div class="h-1">2px</div>
-        <div class="h-8">8px</div>
-        <div class="h-full">h full</div>
-        <div class="h-screen">H screen</div>
-        <div class="min-h-0">H 0</div>
-        <div class="min-h-full">min-h-full</div>
-        <div class="max-h-screen">max-h-screen</div>
-
-        <!--Typography-->
-        <p class="text-xs font-thin text-gray-500 underline">Extra small</p>
-        <p class="text-sm font-extraligh text-red-500">small</p>
-        <p class="text-base font-normal text-blue-500">base</p>
-        <p class="text-lg font-medium text-purple-500 no-underline">text large</p>
-        <p class="text-xl font-semibold text-justify">text extra large</p>
-        <p class="text-2xl font-bold text-left line-through">2x large </p>
-        <p class="text-3xl font-extrabold text-right">3x large</p>
-        <p class="text-md font-black text-center">black</p>
-
-        <!--Line height-->
-        <p class="leading-3">Tight line height</p>
-        <p class="leading-normal">Normal line height</p>
-        <p class="leading-relaxed">Relaxed line height</p>
-        <p class="leading-loose">loose line height</p>
-
-        <!---->
-        <p class="tracking-tighter">Tighter spacing</p>
-        <p class="tracking-tight">Tight spacing</p>
-        <p class="tracking-normal">normal spacing</p>
-        <p class="tracking-wide">Wide spacing</p>
-        <p class="tracking-wider">Wider spacing</p>
-        <p class="tracking-widest">Widest spacing</p>
-        <!--Colors-->
-        <div class="bg-black bg-opacity-25">Black background</div>
-        <div class="bg-gray-100">Light gray</div>
-        <div class="bg-blue-50">Meduim blue</div>
-        <div class="bg-blue-900 bg-opacity-75">Meduim blue</div>
-
-        <div class="w-fit p-8 m-2 bg-blue-400 border-4 border-blue-300  rounded-full">
-            Color Me!
-        </div>
-        <div class="w-fit p-8 m-2 bg-red-400 border-4 border-blue-300 border-t border-b rounded-l-2xl">
-            Color Me!
-        </div>
-
-        <div class="w-fit p-8 m-2 bg-white-400 border-4 border-blue-300 shadow-2xl shadow-inner shadow-red-500/50 rounded-full">
-            Color Me!
-        </div>
-
-        <div class="opacity-25">25 %</div>
-        <button class="w-full border hover:w-1/2 rounded-full border-gray-500  bg-blue-100 focus:border-red-500 duration-300 ease-in">Login</button>
-        <button class="bg-blue-500 active:bg-red-700">Click me</button>
-        
-        <div class="group p-4 hover:bg-gray-100">
-            <h3 class="group-hover:text-blue-600">Title</h3>
-            <p class="group-hover:text-gray-600">Description</p>
-        </div>
-
-        <button class="bg-gray-500 disabled:bg-blue-500 disabled:cursor-not-allowed">Button</button>
-        <div class="space-y-2">
-            <div class="first:mt-4 last:mb-0">Item 1</div>
-            <div class="odd:bg-blue-400 even:bg-white">Item 2</div>
-        </div>
-
-        <!--Transition-->
-        <div class="transition-all duration-300 ease-in hover:bg-blue-500">Smooth transitions</div>
-        <div class="transition-colors duration-300">
-            Color transition
-        </div>
-        <div class="transition-transform duration-300">
-            Transform transition
-        </div>
-        <div class="transition-opacity duration-300">
-            Opacity transition
-        </div>
-        <div class="transition duration-75">
-         75ms
-        </div>
-        <div class="transition duration-200">
-            200ms
-        </div>
-        <div class="transition ease-linear">
-            Linear
-        </div>
-        <div class="transition ease-in">Ease in</div>
-        <div class="transition ease-in-out">Ease in-out</div>
-
-        <!--Transforms-->
-        <div class="transform scale-50">50% scale</div>
-        <div class="transform scale-100">100% scale</div>
-        <div class="transform scale-125">125% scale</div>
-        <div class="transform rotate-45">45 degrees</div>
-        <div class="transform rotate-90">90 degrees</div>
-        <div class="transform translate-y-4">Translate</div>
-        <div class="transform translate-x-6">Translate Y</div>
-        <div class="transform skew-x-12">Skew X</div>
-        <div class="transform skew-y-12">Skew y</div>
-
-        <!--Animation-->
-        <div class="animate-spin w-8 border-4 rounded-full border-black"></div>
-         <div class="animate-bounce mt-5 w-8 border-4 rounded-full border-black"></div>
-          <div class="animate-pulse mt-5 w-8 border-4 rounded-full border-black"></div>
-           <div class="animate-ping mt-5 w-8 border-4 rounded-full border-black"></div>
     </body>
 </html>
