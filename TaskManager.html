@@ -215,7 +215,7 @@
             this.tasks = this.loadTask(); //Data loading
             this.currentId = this.getNextId();// Unique identifier state management
             this.initializeEventListeners(); // To add event listeners
-            this.renderTask(); //Render UI to display task
+            this.renderTasks(); //Render UI to display task
             this.updateStats() ;// To update the stats container                                                                                                                                                                       
         }
         //Creates an empty array to store my tasks
@@ -280,13 +280,29 @@
         }
         this.tasks.push(task);
         this.clearForm();
-        this.renderTask();
+        this.renderTasks();
         this.updateStats();
         this.showNotification(`Task "${title}" added successfully`);
-
-    
     }
-    
+     //Toggle task completion
+     toggleTask(id){
+        this.task = this.tasks.find(t=>t.id === id);
+        if(task){
+            task.completed = !task.completed;
+            task.completedAt = task.completed ? new Date().toISOString():null;
+            this.renderTasks();
+            this.updateStats();
+        }
+     }
+     deleteTask(id){
+            this.task= this.tasks.find(t=>t.id===id);
+            if(task && confirm(`Do you want to delete "${task.title}" ?`)){
+                this.tasks = this.tasks.filter(t=>t.id !== id);
+                this.renderTasks();
+                this.updateStats();
+                this.showNotification('Task deleted successfully!');
+            }
+        }
     
      }
 
