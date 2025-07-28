@@ -341,6 +341,14 @@
             }
             this.renderTasks(filteredTasks);
         }
+
+        renderTasks(tasksToRender = this.tasks){
+            const taskList = document.getElementById('taskList');
+             if(tasksToRender.length === 0){
+                taskList.innerHTML = '<div class="no-tasks">No tasks found,Added some text to begin</div>';
+                return;
+             }
+        }
      }
 
        // Initialize the task manager when the page loads
