@@ -189,7 +189,7 @@
                     <option value="All">All</option>
                     <option value="Low">Low</option>
                     <option value="Meduim">Meduim</option>
-                    <option value="High">Meduim</option>
+                    <option value="High">High</option>
                 </select>
                 <select id="statusFilter">
                     <option value="All">All</option>
@@ -215,7 +215,7 @@
             this.tasks = this.loadTask(); //Data loading
             this.currentId = this.getNextId();// Unique identifier state management
             this.initializeEventListeners(); // To add event listeners
-            this.renderTasks(); //Render UI to display task
+             this.renderTasks(); //Render UI to display task
             this.updateStats() ;// To update the stats container                                                                                                                                                                       
         }
         //Creates an empty array to store my tasks
@@ -303,13 +303,109 @@
                 this.showNotification('Task deleted successfully!');
             }
         }
+
+        editTask(id){
+            const task =this.tasks.find(t => t.id === id);
+            if(task){
+                document.getElementById('taskTitle').value = task.title;
+                document.getElementById('taskDescription').value = task.description;
+                document.getElementById('taskPriority').value = task.priority;
+                document.getElementById('taskDueDate').value = task.dueDate;
+
+                this.deleteTask(id);
+                document.getElementById('taskTitle').focus();
+            }
+        }
     
+        filterTasks(){
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const priorityFilter = document.getElementById('priorityFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+
+            let filteredTasks = this.tasks;
+            if(searchTerm){
+                filteredTasks = filteredTasks.filter(task => 
+                    task.title.toLowerCase().includes(searchTerm) || 
+                    task.description.toLowerCase().includes(searchTerm)
+                );
+            }
+            if(priorityFilter !== 'all'){
+                filteredTasks = filteredTasks.filter(
+                    task => task.priority === priorityFilter
+                );
+            }
+            if(statusFilter !== 'all'){
+                filteredTasks = filteredTasks.filter(
+                    task => statusFilter === 'completed'? task.completed : !task.completed
+                );
+            }
+            this.renderTasks(filteredTasks);
+        }
      }
 
        // Initialize the task manager when the page loads
        const taskManager = new Manager();
        
-      </script> 
+      </script>  
+
+      <!-- <script>
+        class taskManager{
+            constructor(){
+                this.tasks = this.loadTask();
+                this.currentId = this.getNextId();
+                this.renderTasks();
+                this.initializeEventListeners();
+                this.updateStats();
+            }
+
+            loadTask(){
+                return [];
+            }
+
+            getNextId(){
+                return tasks.length > 0 ? Math.max(...this.tasks.map(t => t.id))+1:1
+            }
+
+
+            initializeEventListeners(){
+
+                document.getElementById('clearAllBtn').addEventListener('click',()=>this.clearForm());
+                document.getElementById('statusFilter').addEventListener('change',()=>this.statusFilter());
+                document.getElementById('priorityFilters').addEventListener('change',()=>this.priorityFilters());
+                // document.getElementById('searchInput').addEventListener('input', this.debounce((e)=>this.filterTask(),300));
+                document.getElementById('taskForm').addEventListener('submit',(e)=>{
+                    e.preventDefault();
+                    this.addTask();
+                })
+            }
+
+            addTask(){
+             const title =   document.getElementById('taskTitle').value.trim();
+             const description = document.getElementById('taskDescription').value.trim();
+             const priority = document.getElmentById('taskPriority').value;
+             const dueDate = document.getElementById('taskDueDate').value;
+
+             if(!title){
+                alert("Please enter a value");
+                return;
+             }
+
+             const task = {
+                id:this.currentId++,
+                title,
+                 description,
+            priority,
+            dueDate,
+            completed:false,
+            createdAt: new Date().toISOString(),
+            completedAt:null
+        }
+        this.tasks.push(task);
+            }
+        }
+const taskManager = new Manager();
+
+      </script> -->
      
 
 
