@@ -1,10 +1,10 @@
 {
   "name": "tailwindcss",
-  "version": "1.0.0",
+  "version": "4.1.11",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwind":"npx @tailwindcss/cli -i ./input.css -o ./output.css --watch"
+    "tailwind":"npx tailwindcss/cli -i ./input.css -o ./output.css --watch"
   },
   "author": "",
   "license": "ISC",

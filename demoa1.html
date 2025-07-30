@@ -233,26 +233,27 @@
         </script>
         <!--Collapsable javascript-->
         <script>
-            var section = document.getElementsByClassName("section");
-        let i;
+          var section = document.getElementsByClassName('section');
+          let x = 0;
 
-            for(i=0;i<section.length;i++){
-                section[i].addEventListener("click",function(){
-                    var collapsable = document.querySelectorAll(".collapsable");
-                    this.classList.toggle("active");
-                    for(var j = 0;j<collapsable.length;j++){
-                        collapsable[j].style.display = "none";
-                    }
-                    var panel= this.nextElementSibling;
-                    
-                    if(panel.style.display==="none"){
-                        panel.style.display="block";
-                    }
-                    else{
-                        panel.style.display="block";
-                    }
-                })
-            }
+          for(x; x < section.length;x++){
+            (function(index){
+            section[index].addEventListener('click',function(){
+              this.classList.toggle('active');
+              var collapsable = document.querySelectorAll('.collapsable');
+              for(j=0;j<collapsable.length;j++ ){
+                collapsable[j].style.display = "none"
+              }
+               var panel = collapsable[index];
+              if(panel.style.display=="none")
+              {panel.style.display="block"}
+              else{
+                panel.style.display="block"
+              }
+
+            })})(x);
+
+          }
 
         </script>
 
