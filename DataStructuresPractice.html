@@ -21,10 +21,16 @@
            get(index){
             return this.data[index];
            }
+
+           push(item){
+            this.data[this.length] = item;
+            this.length++;
+            return [item  , this.length ];
+           }
         }
         const FruitArrays = new dynamicArrays;
-        const Fruit = FruitArrays.get(1)
-       document.getElementById('tryme').innerHTML = Fruit;
+        const Fruit = FruitArrays.push('Fish')
+       document.getElementById('tryme').innerHTML = Fruit[0];
 
         </script>
 
