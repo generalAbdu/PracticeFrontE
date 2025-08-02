@@ -25,12 +25,16 @@
            push(item){
             this.data[this.length] = item;
             this.length++;
-            return [item  , this.length ];
+            //return [item  , this.length ];
+            return {
+                item : item,
+                length : this.length
+            }
            }
         }
         const FruitArrays = new dynamicArrays;
         const Fruit = FruitArrays.push('Fish')
-       document.getElementById('tryme').innerHTML = Fruit[0];
+       document.getElementById('tryme').innerHTML = Fruit.length;
 
         </script>
 
